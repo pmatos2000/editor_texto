@@ -35,9 +35,8 @@ body {
 .areaTexto {
   width: 100%;
   flex-grow: 1;
-  resize: none;
-  border: none;
   outline: none;
+  display: inline-block;
 }
 
 @media (prefers-color-scheme: dark) {

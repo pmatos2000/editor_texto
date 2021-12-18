@@ -14,11 +14,19 @@
     <link rel="stylesheet" type="text/css" href="./styles.css" />
   </head>
   <body>
-    <menu class="menuHorizontal">
-      <button class="botaoMenu textoNegrito">B</button>
-      <button class="botaoMenu textoItalico">I</button>
-      <button class="botaoMenu"><u>S</u></button>
-    </menu>
-    <textarea class="areaTexto" type="text" /></textarea>
+    <div class="app">
+      <menu class="menuHorizontal">
+        <button class="botaoMenu textoNegrito" id="botaoNegrito">B</button>
+        <button class="botaoMenu textoItalico">I</button>
+        <button class="botaoMenu"><u>S</u></button>
+      </menu>
+      <div
+        contenteditable="true"
+        class="areaTexto"
+        type="text"
+        id="areaTexto"
+      ></div>
+    </div>
+    <script src="./app.js"></script>
   </body>
 </html>
