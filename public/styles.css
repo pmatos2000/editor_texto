@@ -7,10 +7,55 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.botaoMenu {
+  width: 32px;
+  height: 32px;
+  font-size: larger;
+  border: none;
+  transition: transform 0.6s ease-in-out;
+}
+
+.menuHorizontal {
+  width: 100%;
+  border-bottom: 1px solid #888;
+}
+
+.textoNegrito {
+  font-weight: bold;
+}
+
+.textoItalico {
+  font-style: italic;
+}
+
+.areaTexto {
+  width: 100%;
+  flex-grow: 1;
+  resize: none;
+  border: none;
+  outline: none;
 }
 
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #000;
+  }
+  .botaoMenu {
+    background-color: #333;
+    color: #fff;
+  }
+  .botaoMenu:hover {
+    background-color: #222;
+  }
+  .botaoMenu:active {
+    background-color: #111;
+  }
+  .areaTexto {
+    background-color: #000;
+    color: #fff;
   }
 }
