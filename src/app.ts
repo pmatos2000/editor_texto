@@ -8,15 +8,17 @@ const areaTexto = <HTMLDivElement | undefined>(
 );
 
 const adicionarEstilo = (selecao: Selection, estilo: HTMLElement) => {
-  if (selecao.anchorNode instanceof Text && selecao.anchorNode === selecao.focusNode) {
-      const range = selecao.getRangeAt(0);
-      modificarEstiloTextoLinha(
-        selecao.anchorNode,
-        estilo,
-        range.startOffset,
-        range.endOffset
-      );
-    }
+  if (
+    selecao.anchorNode instanceof Text &&
+    selecao.anchorNode === selecao.focusNode
+  ) {
+    const range = selecao.getRangeAt(0);
+    modificarEstiloTextoLinha(
+      selecao.anchorNode,
+      estilo,
+      range.startOffset,
+      range.endOffset
+    );
   }
 };
 
@@ -65,9 +67,8 @@ const modificarEstiloTextoLinha = (
 const acaoBotaoNegrito = () => {
   if (areaTexto) {
     const selecao = document.getSelection();
-    if(selecao)
-    {
-      adicionarEstilo(selecao,  document.createElement("strong"))
+    if (selecao) {
+      adicionarEstilo(selecao, document.createElement("strong"));
     }
   }
 };
