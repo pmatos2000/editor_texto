@@ -16,6 +16,20 @@ const adicionarEstilo = (selecao: Selection, elemento: HTMLElement) => {
   }
 };
 
+const atualizarFilhosElementos = (
+  pai: Node,
+  elementoQueVaiSerRemovido: Node,
+  elemento: Node,
+  elementoAntes: Node | null = null,
+  elementoDepois: Node | null = null
+) => {
+  if (elementoAntes) pai.insertBefore(elementoAntes, elementoQueVaiSerRemovido);
+  pai.insertBefore(elemento, elementoQueVaiSerRemovido);
+  if (elementoDepois)
+    pai.insertBefore(elementoDepois, elementoQueVaiSerRemovido);
+  pai.removeChild(elementoQueVaiSerRemovido);
+};
+
 const modificarEstiloTextoLinha = (
   elemento: Text,
   estilo: HTMLElement,
@@ -33,10 +47,14 @@ const modificarEstiloTextoLinha = (
       fim !== texto.length
         ? document.createTextNode(texto.substring(fim))
         : null;
-    pai.removeChild(elemento);
-    if (elementoTextoAntesSelecao) pai.appendChild(elementoTextoAntesSelecao);
-    pai.appendChild(estilo);
-    if (elementoTextoDepoisSelecao) pai.appendChild(elementoTextoDepoisSelecao);
+
+    atualizarFilhosElementos(
+      pai,
+      elemento,
+      estilo,
+      elementoTextoAntesSelecao,
+      elementoTextoDepoisSelecao
+    );
   }
 };
 
