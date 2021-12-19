@@ -64,11 +64,11 @@ const modificarEstiloTextoLinha = (
   }
 };
 
-const acaoBotaoNegrito = () => {
+const adicionarEstiloUsandoElemetno = (elemento: string) => {
   if (areaTexto) {
     const selecao = document.getSelection();
     if (selecao) {
-      adicionarEstilo(selecao, document.createElement("strong"));
+      adicionarEstilo(selecao, document.createElement(elemento));
     }
   }
 };
@@ -76,7 +76,15 @@ const acaoBotaoNegrito = () => {
 const listaBotao: IBotao[] = [
   {
     idHtml: "botaoNegrito",
-    acao: acaoBotaoNegrito,
+    acao: () => adicionarEstiloUsandoElemetno("strong"),
+  },
+  {
+    idHtml: "botaoItalico",
+    acao: () => adicionarEstiloUsandoElemetno("em"),
+  },
+  {
+    idHtml: "botaoSublinhado",
+    acao: () => adicionarEstiloUsandoElemetno("u"),
   },
 ];
 
