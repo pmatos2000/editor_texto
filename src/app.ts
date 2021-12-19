@@ -7,12 +7,16 @@ const areaTexto = <HTMLDivElement | undefined>(
   document.getElementById("areaTexto")
 );
 
-const adicionarEstilo = (selecao: Selection, elemento: HTMLElement) => {
-  if (
-    selecao?.anchorNode instanceof Text &&
-    selecao?.focusNode instanceof Text
-  ) {
-    return true;
+const adicionarEstilo = (selecao: Selection, estilo: HTMLElement) => {
+  if (selecao.anchorNode instanceof Text && selecao.anchorNode === selecao.focusNode) {
+      const range = selecao.getRangeAt(0);
+      modificarEstiloTextoLinha(
+        selecao.anchorNode,
+        estilo,
+        range.startOffset,
+        range.endOffset
+      );
+    }
   }
 };
 
@@ -61,18 +65,9 @@ const modificarEstiloTextoLinha = (
 const acaoBotaoNegrito = () => {
   if (areaTexto) {
     const selecao = document.getSelection();
-    console.log(selecao);
-    if (selecao?.anchorNode instanceof Text) {
-      for (let i = 0; i < selecao.rangeCount; i++) {
-        const range = selecao.getRangeAt(i);
-        console.log(range);
-        modificarEstiloTextoLinha(
-          selecao?.anchorNode,
-          document.createElement("strong"),
-          range.startOffset,
-          range.endOffset
-        );
-      }
+    if(selecao)
+    {
+      adicionarEstilo(selecao,  document.createElement("strong"))
     }
   }
 };
